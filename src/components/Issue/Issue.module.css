@@ -1,0 +1,23 @@
+.container * {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	width: 100%;
+	background-color: #eeeeee;
+	border-radius: 10px;
+	display: grid;
+	gap: 20px;
+
+	padding: 10px;
+}
+
+.button {
+	outline: none;
+	border: none;
+
+	outline: 1px solid gray;
+	padding: 10px;
+	border-radius: 10px;
+}
