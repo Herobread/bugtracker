@@ -7,10 +7,17 @@ import SignOutButton from './SignOutButton'
 export default function Home() {
 	const { data } = useSession()
 
+	if (data?.user) {
+		return (
+			<>
+				<p>Logged in as {data.user.name}</p>
+				<SignOutButton />
+			</>
+		)
+	}
+
 	return (
 		<main>
-			<SignOutButton />
-			<pre>{JSON.stringify(data)}</pre>
 			<Link href={'/login'}>Login</Link>
 			<Link href={'/register'}>Register</Link>
 		</main>

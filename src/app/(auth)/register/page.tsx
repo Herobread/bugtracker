@@ -5,8 +5,9 @@ import { useState } from 'react'
 import { registerUser } from './register'
 import Error from '@/components/Error/Error'
 import { useForm } from 'react-hook-form'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import Protected from '@/components/Protected/Protected'
 
 export interface Inputs {
 	username: string
@@ -18,7 +19,10 @@ export default function Register() {
 	const [error, setError] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
+	const { status } = useSession()
+
 	const router = useRouter()
+
 	const {
 		register,
 		handleSubmit,
@@ -47,6 +51,7 @@ export default function Register() {
 
 	return (
 		<div>
+			<Protected user="only-unauthenticated" redirectTo="projects" />
 			<h1>Register</h1>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<label>

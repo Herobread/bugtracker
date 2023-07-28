@@ -34,7 +34,7 @@ export async function createProject(data: Inputs) {
 		},
 	})
 
-	revalidatePath('projects')
+	revalidatePath('/projects/')
 
 	return project
 }

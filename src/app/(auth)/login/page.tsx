@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Error from '@/components/Error/Error'
 import { useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
+import Protected from '@/components/Protected/Protected'
 
 export interface Inputs {
 	password: string
@@ -37,6 +38,7 @@ export default function Register() {
 
 	return (
 		<div>
+			<Protected user="only-unauthenticated" redirectTo="projects" />
 			<h1>Login</h1>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<label>
